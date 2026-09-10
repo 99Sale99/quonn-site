@@ -5,3 +5,7 @@
 *.woff2 binary
 *.woff binary
 *.ttf binary
+
+# Cloudflare Pages config files must use LF line endings
+_redirects text eol=lf
+_headers   text eol=lf
