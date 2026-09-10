@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Fonts are binary
+*.woff2 binary
+*.woff binary
+*.ttf binary
