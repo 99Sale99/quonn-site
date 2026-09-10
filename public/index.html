@@ -839,6 +839,11 @@
       var h = currentPage();
       pages.forEach(function (p) { document.getElementById("page-" + p).hidden = (p !== h); });
       if (h !== "home") window.scrollTo(0, 0);
+      // unknown path (catch-all served the app) → tidy the URL back to root
+      var path = location.pathname.replace(/^\/+|\/+$/g, "");
+      if (h === "home" && path && pages.indexOf(path) < 0 && !location.hash) {
+        try { history.replaceState({}, "", "/"); } catch (e) {}
+      }
     }
     window.addEventListener("hashchange", route);
     window.addEventListener("popstate", route);
