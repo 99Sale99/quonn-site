@@ -827,15 +827,22 @@
     setT(cur());
     btn.addEventListener("click", function () { var n = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; setT(n); try { localStorage.setItem(KEY, n); } catch (e) {} });
 
-    /* router */
+    /* router — path (/datenschutz) or hash (#datenschutz) */
     var pages = ["home", "impressum", "datenschutz"];
-    function route() {
-      var raw = location.hash.replace(/^#\/?/, ""), h = raw.split("/")[0];
-      if (pages.indexOf(h) < 0) h = "home";
-      pages.forEach(function (p) { document.getElementById("page-" + p).hidden = (p !== h); });
-      if (pages.indexOf(raw) >= 0) window.scrollTo(0, 0);
+    function currentPage() {
+      var raw = location.hash.replace(/^#\/?/, "").split("/")[0];
+      if (pages.indexOf(raw) >= 0) return raw;
+      var p = location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
+      return (pages.indexOf(p) >= 0) ? p : "home";
     }
-    window.addEventListener("hashchange", route); route();
+    function route() {
+      var h = currentPage();
+      pages.forEach(function (p) { document.getElementById("page-" + p).hidden = (p !== h); });
+      if (h !== "home") window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", route);
+    window.addEventListener("popstate", route);
+    route();
 
     /* mini waveform */
     var mw = document.getElementById("mwave"), mph = document.getElementById("mph");

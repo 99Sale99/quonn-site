@@ -1,6 +1,4 @@
-/impressum       /#impressum      301
-/impressum/      /#impressum      301
-/datenschutz     /#datenschutz    301
-/datenschutz/    /#datenschutz    301
-/faq             /#faq            301
-/demo            /#demo           301
+/impressum       /index.html   200
+/impressum/      /index.html   200
+/datenschutz     /index.html   200
+/datenschutz/    /index.html   200
