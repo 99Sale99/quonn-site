@@ -1,7 +1,14 @@
 <!doctype html>
+<html lang="de">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quonn – Transkription, offline für Windows</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="128x128" href="/icon-180.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<meta name="theme-color" content="#f1f4f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a100f" media="(prefers-color-scheme: dark)">
 <meta name="description" content="Quonn transkribiert Vorlesungen, Interviews und Besprechungen offline auf deinem Windows-PC – mit Zusammenfassung, Karteikarten, Quiz und Übersetzung. Einmalkauf, kein Abo, kein Konto.">
 <link rel="canonical" href="https://quonn.app/">
 <meta property="og:type" content="website">
@@ -33,7 +40,7 @@
 <style>
   :root {
     --ground:#f1f4f3; --surface:#fcfdfd; --surface-2:#e8ecea; --panel:#f7f9f8;
-    --ink:#15201e; --ink-dim:#53605d; --ink-faint:#869492;
+    --ink:#15201e; --ink-dim:#53605d; --ink-faint:#6f7a77;
     --accent:#125d67; --accent-deep:#0c454d; --accent-ink:#fbfdfc;
     --accent-wash:#125d6714; --accent-line:#125d6733;
     --warn:#9d661a; --warn-wash:#9d661a1c;
@@ -47,7 +54,7 @@
   }
   :root:not([data-theme="light"]) { @media (prefers-color-scheme: dark) {
     --ground:#0a100f; --surface:#131a19; --surface-2:#0f1514; --panel:#101615;
-    --ink:#e9eeed; --ink-dim:#98a4a2; --ink-faint:#69756f;
+    --ink:#e9eeed; --ink-dim:#98a4a2; --ink-faint:#828e88;
     --accent:#58bac6; --accent-deep:#0e3c43; --accent-ink:#06100e;
     --accent-wash:#58bac61e; --accent-line:#58bac640;
     --warn:#d9a95c; --warn-wash:#d9a95c22;
@@ -60,7 +67,7 @@
   }}
   :root[data-theme="dark"] {
     --ground:#0a100f; --surface:#131a19; --surface-2:#0f1514; --panel:#101615;
-    --ink:#e9eeed; --ink-dim:#98a4a2; --ink-faint:#69756f;
+    --ink:#e9eeed; --ink-dim:#98a4a2; --ink-faint:#828e88;
     --accent:#58bac6; --accent-deep:#0e3c43; --accent-ink:#06100e;
     --accent-wash:#58bac61e; --accent-line:#58bac640;
     --warn:#d9a95c; --warn-wash:#d9a95c22;
@@ -739,7 +746,7 @@
       <h2>Kontakt</h2>
       <p>E-Mail: <a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a></p>
       <h2>Umsatzsteuer</h2>
-      <p><span class="ph">[Nach der steuerlichen Erfassung ergänzen: Kleinunternehmer nach § 19 UStG – es wird keine Umsatzsteuer ausgewiesen; oder die Umsatzsteuer-Identifikationsnummer]</span></p>
+      <p>Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine Umsatzsteuer berechnet und ausgewiesen.</p>
       <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
       <p>Saša Vuksan, Anschrift wie oben.</p>
       <h2>Verbraucherstreitbeilegung</h2>
@@ -758,8 +765,11 @@
     <div class="wrap legal">
       <a href="#home" class="back label">← Zurück</a>
       <h1>Datenschutzerklärung</h1>
-      <p class="updated">Stand: 2. September 2026</p>
+      <p class="updated">Stand: 10. September 2026</p>
       <div class="box"><p><strong>Kurzfassung:</strong> Quonn verarbeitet alles lokal auf deinem Gerät. Es gibt keinen Server, kein Konto und kein Tracking.</p></div>
+      <h2>Verantwortlicher</h2>
+      <p>Verantwortlich für die Datenverarbeitung im Zusammenhang mit dieser Website und der App Quonn ist der im Impressum genannte Anbieter:</p>
+      <p>Saša Vuksan<br>c/o Online-Impressum #10905<br>Europaring 90<br>53757 Sankt Augustin<br>Deutschland<br>E-Mail: <a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a></p>
       <h2>Die App Quonn</h2>
       <h3>Welche Daten verarbeitet Quonn?</h3>
       <ul>
@@ -774,6 +784,8 @@
       <h2>Diese Website</h2>
       <p>Diese Website wird bei Cloudflare Pages gehostet (Anbieter: Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA). Beim Aufruf der Seite erstellt der Anbieter technisch notwendige Server-Protokolle (u. a. IP-Adresse, Zeitpunkt des Zugriffs, aufgerufene Seite), um die Auslieferung und Sicherheit der Seite zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag; die Übermittlung in die USA ist durch die Standardvertragsklauseln der EU-Kommission abgesichert.</p>
       <p>Diese Website setzt keine Cookies und bindet keine Analyse- oder Tracking-Dienste ein. Alle Schriften werden lokal vom Server dieser Website geladen; es findet keine Verbindung zu Google Fonts oder anderen externen Anbietern statt.</p>
+      <p>Wenn du zwischen heller und dunkler Ansicht wechselst, wird diese Auswahl lokal in deinem Browser gespeichert (localStorage). Diese Angabe verlässt deinen Browser nicht und wird nicht an einen Server übertragen.</p>
+      <p>Die Verbindung zu dieser Website ist per SSL/TLS verschlüsselt (erkennbar am „https://" in der Adresszeile).</p>
       <h3>Deine Rechte</h3>
       <p>Dir stehen die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch zu. Du hast außerdem das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.</p>
       <h3>Kontakt</h3>
