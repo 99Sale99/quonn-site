@@ -556,7 +556,7 @@
           <li>Aufbereitet</li>
           <li>Lernstoff</li>
         </ol>
-        <p class="demo-lead">Aus einer Aufnahme wird in Sekunden verwertbares Wissen. Klick dich durch – von der Startseite bis ins fertige Transkript.</p>
+        <p class="demo-lead">Aus einer Aufnahme wird verwertbares Wissen. Klick dich durch dieses fertige Beispiel – von der Startseite bis ins fertige Transkript.</p>
         <div class="app-shell">
         <div class="app" id="appHome">
           <div class="app-bar">
@@ -767,11 +767,12 @@
         <p class="lead">Ein Kauf. Kein Nachschlag.</p>
         <div class="incl">
           <span>Fast 100 Sprachen</span>
-          <span>Word · PDF · TXT · Markdown · SRT · VTT</span>
+          <span>Word · PDF · HTML · TXT · Markdown · SRT · VTT</span>
           <span>Zusammenfassung</span>
           <span>Karteikarten &amp; Anki</span>
           <span>Glossar</span>
           <span>Quiz</span>
+          <span>Text aufpolieren</span>
           <span>Übersetzung EN · DE · ES · RU</span>
           <span>Ganze Ordner auf einmal</span>
           <span>Eigene Aufnahme (Mikrofon)</span>
@@ -811,7 +812,7 @@
           </details>
           <details>
             <summary>Ich brauche ein bestimmtes Exportformat – baut ihr das ein?</summary>
-            <p>Word, PDF, TXT, Markdown, SRT und VTT sind dabei – das deckt fast jeden Fall ab. Fehlt dir eins, schreib mir. Ich baue nicht jede Nischenfunktion ein, aber ein sinnvolles Format gern.</p>
+            <p>Word, PDF, HTML, TXT, Markdown, SRT und VTT sind dabei – das deckt fast jeden Fall ab. Fehlt dir eins, schreib mir. Ich baue nicht jede Nischenfunktion ein, aber ein sinnvolles Format gern.</p>
           </details>
           <details>
             <summary>Erkennt Quonn, wer gerade spricht?</summary>
@@ -866,7 +867,7 @@
     <div class="wrap legal">
       <a href="#home" class="back label">← Zurück</a>
       <h1>Datenschutzerklärung</h1>
-      <p class="updated">Stand: 10. September 2026</p>
+      <p class="updated">Stand: 13. September 2026</p>
       <div class="box"><p><strong>Kurzfassung:</strong> Quonn verarbeitet alles lokal auf deinem Gerät. Es gibt keinen Server, kein Konto und kein Tracking.</p></div>
       <h2>Verantwortlicher</h2>
       <p>Verantwortlich für die Datenverarbeitung im Zusammenhang mit dieser Website und der App Quonn ist der im Impressum genannte Anbieter:</p>
@@ -877,6 +878,9 @@
         <li>Deine Audio- und Videodateien sowie die daraus erzeugten Transkripte, Übersetzungen und Lernhilfen werden ausschließlich auf deinem Computer verarbeitet und gespeichert (im lokalen App-Datenordner deines Windows-Benutzerkontos). Sie werden zu keinem Zeitpunkt an mich oder Dritte übertragen.</li>
         <li>Quonn sammelt keine Nutzungsdaten, Telemetrie, Absturzberichte oder Gerätekennungen und sendet nichts „nach Hause".</li>
         <li>Es gibt kein Benutzerkonto und keine Anmeldung.</li>
+        <li><strong>Mikrofon (optional):</strong> In der Bibliothekssuche kannst du eine Frage statt zu tippen kurz einsprechen. Quonn greift nur nach einem bewussten Klick auf den Mikrofon-Knopf zu (maximal 20 Sekunden je Aufnahme), wandelt sie lokal in Text um und löscht die Tonaufnahme sofort danach wieder – sie wird nie gespeichert oder übertragen.</li>
+        <li><strong>Eigene Aufnahme (optional):</strong> Über „Aufnahme starten" kannst du direkt in Quonn eine Tonaufnahme über dein Mikrofon anfertigen. Die Aufnahme wird ausschließlich lokal auf deinem Rechner gespeichert und wie jede andere hinzugefügte Datei behandelt. Das Mikrofon nimmt alles auf, was im Raum hörbar ist – nicht nur deine eigene Stimme. Wenn dabei andere Personen zu hören sind, bist <strong>du</strong> dafür verantwortlich, vorher deren Zustimmung einzuholen. Quonn ist ein allgemeines Aufnahme-Werkzeug wie ein Diktiergerät – für die rechtmäßige Nutzung ist ausschließlich der Nutzer verantwortlich.</li>
+        <li><strong>System-Ton (optional):</strong> Beim Starten einer eigenen Aufnahme kannst du zusätzlich den System-Ton mit aufnehmen (z. B. einen Video-Call). Das nimmt auch Stimmen anderer Personen auf, die über deine Lautsprecher zu hören sind. Das gesprochene Wort einer anderen Person ohne deren Einwilligung aufzunehmen ist in Deutschland eine Straftat (§201 StGB) und kann zusätzlich die DSGVO betreffen. Quonn zeigt vor jedem Einschalten dieser Funktion einen entsprechenden Warnhinweis – <strong>du</strong> bist dafür verantwortlich, vorher die Zustimmung aller Beteiligten einzuholen; Quonn kann das technisch nicht automatisch tun, da es kein Teilnehmer des jeweiligen Gesprächs ist. Auch diese Aufnahme bleibt ausschließlich lokal auf deinem Rechner.</li>
       </ul>
       <h3>Internetverbindungen</h3>
       <p>Quonn funktioniert vollständig offline. Eine Internetverbindung wird nur in einem einzigen Fall genutzt: Wenn du in den Einstellungen freiwillig ein zusätzliches Erkennungs- oder KI-Modell herunterlädst, lädt die App diese Datei direkt von Hugging Face (huggingface.co). Es werden keine personenbezogenen Daten von dir übermittelt. Es gelten die Datenschutzbestimmungen von Hugging Face.</p>
@@ -894,12 +898,29 @@
       <hr>
       <h2>English</h2>
       <div class="box"><p><strong>Summary:</strong> Quonn processes everything locally on your device. There is no server, no account and no tracking.</p></div>
+      <h3>Controller</h3>
+      <p>Responsible for the data processing in connection with this website and the Quonn app is the provider named in the imprint (Impressum):</p>
+      <p>Saša Vuksan<br>c/o Online-Impressum #10905<br>Europaring 90<br>53757 Sankt Augustin<br>Germany<br>Email: <!--email_off--><a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a><!--/email_off--></p>
       <h3>What data does Quonn process?</h3>
       <ul>
-        <li>Your audio and video files, and the transcripts, translations and study aids generated from them, are processed and stored solely on your computer. They are never transmitted to me or to any third party.</li>
-        <li>Quonn collects no usage data, telemetry, crash reports or device identifiers.</li>
+        <li>Your audio and video files, and the transcripts, translations and study aids generated from them, are processed and stored solely on your computer (in the local app data folder of your Windows user account). They are never transmitted to me or to any third party.</li>
+        <li>Quonn collects no usage data, telemetry, crash reports or device identifiers, and does not "phone home".</li>
         <li>There is no user account and no sign-in.</li>
+        <li><strong>Microphone (optional):</strong> In library search you can speak a question instead of typing it. Quonn only accesses the microphone after you deliberately click the microphone button (max. 20 seconds per recording), converts it to text locally, and deletes the recording immediately afterwards – it is never stored or transmitted.</li>
+        <li><strong>Own recording (optional):</strong> Via "Start recording" you can make an audio recording directly in Quonn using your microphone. The recording is stored exclusively on your own computer and treated like any other added file. The microphone captures everything audible in the room – not just your own voice. If other people are audible, <strong>you</strong> are responsible for obtaining their consent beforehand. Quonn is a general-purpose recording tool, like a dictaphone – responsibility for lawful use lies solely with the user.</li>
+        <li><strong>System audio (optional):</strong> When starting your own recording, you can also record the system audio (e.g. a video call). This also captures other people's voices audible through your speakers. Recording the spoken word of another person without their consent is a criminal offense in Germany (§201 StGB) and may also fall under GDPR. Quonn shows a corresponding warning every time before you turn this feature on – <strong>you</strong> are responsible for obtaining the consent of everyone involved beforehand; Quonn cannot do this automatically, since it is not a participant in the conversation. This recording, too, stays exclusively local on your computer.</li>
       </ul>
+      <h3>Internet connections</h3>
+      <p>Quonn works fully offline. An internet connection is used in one case only: if you voluntarily download an additional recognition or AI model from the settings, the app downloads that file directly from Hugging Face (huggingface.co). No personal data about you is transmitted. Hugging Face's privacy terms apply to that transfer.</p>
+      <h3>Storage and deletion</h3>
+      <p>All data is local. You can delete individual recordings in the app at any time, or uninstall the app entirely, which removes the associated data.</p>
+      <h3>This website</h3>
+      <p>This website is hosted by Cloudflare Pages (provider: Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA). When you visit the site, the provider technically creates server logs (including IP address, time of access, page requested) to ensure delivery and security of the site. The legal basis is Art. 6(1)(f) GDPR. A data processing agreement is in place with Cloudflare; the transfer to the USA is safeguarded by the European Commission's Standard Contractual Clauses.</p>
+      <p>This website does not use cookies and does not embed any analytics or tracking services. All fonts are loaded locally from this website's own server; no connection is made to Google Fonts or other external providers.</p>
+      <p>If you switch between light and dark view, this choice is stored locally in your browser (localStorage). This information never leaves your browser and is not transmitted to any server.</p>
+      <p>The connection to this website is encrypted via SSL/TLS (indicated by "https://" in the address bar).</p>
+      <h3>Your rights</h3>
+      <p>You have the right to access, rectification, erasure, restriction of processing, data portability and objection. You also have the right to lodge a complaint with a data protection supervisory authority.</p>
       <h3>Contact</h3>
       <p>For privacy questions: <!--email_off--><a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a><!--/email_off--></p>
     </div>
