@@ -246,6 +246,9 @@
   .app-tabs button:hover { color:var(--ink-dim); }
   .app-tabs button[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--accent); }
 
+  /* mobile: stacked "Etappen" instead of tabs, see max-width:640px block below */
+  .stage-tag { display:none; }
+
   .app-body { padding:clamp(18px,2.4vw,30px); min-height:300px; }
 
   /* home-screen demo (Kachelwand) */
@@ -494,6 +497,23 @@
       mask-image:linear-gradient(to right,#000 84%,transparent); }
     .app-tabs button { scroll-snap-align:start; }
   }
+
+  /* mobile demo: vertikale Etappen-Karten zum Runterscrollen statt Tabs */
+  @media (max-width:640px) {
+    .demo-band .app-tabs { display:none; }
+    .demo-band .app-shell #app[hidden] { display:block; }
+    .demo-band .app-body > .view[hidden] { display:block; }
+    .demo-band .app-body > .view { padding-top:22px; }
+    .demo-band .app-body > .view:first-child { padding-top:0; }
+    .demo-band .app-body > .view + .view { margin-top:22px; border-top:1px solid var(--line); }
+    .stage-tag { display:flex; align-items:center; gap:9px; font-family:"IBM Plex Mono",monospace;
+      font-weight:500; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--ink-faint); margin-bottom:14px; }
+    .stage-num { display:grid; place-items:center; width:20px; height:20px; border-radius:50%;
+      border:1px solid var(--accent-line); color:var(--accent); font-size:0.62rem; flex:none; }
+    .demo-band .lang-pick { flex-wrap:wrap; }
+  }
+
   @media (max-width:430px) {
     .hero h1 { font-size:2.05rem; letter-spacing:-0.03em; }
     .hero .sub { font-size:1rem; }
@@ -577,6 +597,7 @@
             <span class="app-file">Aufnahmen</span>
           </div>
           <div class="app-body home-body">
+            <p class="stage-tag"><span class="stage-num">1</span>Start</p>
             <p class="home-head">Was möchtest du tun?</p>
             <div class="home-tiles">
               <button type="button" class="home-tile">
@@ -630,6 +651,7 @@
           <div class="app-body">
             <!-- transcript -->
             <div class="view" id="panel-t" role="tabpanel" aria-labelledby="tab-t" data-view="t">
+              <p class="stage-tag"><span class="stage-num">2</span>Transkript</p>
               <div class="doc" id="doc">
                 <span class="sen" data-t="38"><span class="stamp">00:38</span>Stellen Sie sich ein Hotel mit unendlich vielen Zimmern vor – und alle sind belegt. Kommt ein neuer Gast, sagt der <span class="uncertain" id="unc">Portier</span><button class="ck" id="ck" type="button" title="Klingt richtig – abhaken" aria-label="Stelle als geprüft markieren"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button> trotzdem: Wir haben ein Zimmer für Sie.<span class="play-dot"></span></span>
                 <span class="sen" data-t="75"><span class="stamp">01:15</span>Der Trick ist einfach: Jeder Gast zieht ein Zimmer weiter. Der Gast aus Zimmer eins nach zwei, aus zwei nach drei, und so fort. Zimmer eins wird frei.<span class="play-dot"></span></span>
@@ -641,6 +663,7 @@
 
             <!-- polished -->
             <div class="view" id="panel-p" role="tabpanel" aria-labelledby="tab-p" data-view="p" hidden>
+              <p class="stage-tag"><span class="stage-num">3</span>Aufpoliert</p>
               <div class="doc">
                 <span class="sen" style="cursor:default"><span class="stamp">00:38</span>Stellen Sie sich ein Hotel mit unendlich vielen Zimmern vor, und alle sind belegt. Kommt ein neuer Gast, sagt der Portier trotzdem: „Wir haben ein Zimmer für Sie."</span>
                 <span class="sen" style="cursor:default"><span class="stamp">01:15</span>Der Trick ist einfach: Jeder Gast zieht ein Zimmer weiter. Der Gast aus Zimmer eins nach zwei, aus zwei nach drei und so fort. Zimmer eins wird frei.</span>
@@ -652,6 +675,7 @@
 
             <!-- übersetzung -->
             <div class="view" id="panel-e" role="tabpanel" aria-labelledby="tab-e" data-view="e" hidden>
+              <p class="stage-tag"><span class="stage-num">4</span>Übersetzung</p>
               <div class="lang-pick" role="group" aria-label="Sprache der Übersetzung">
                 <button type="button" data-lang="en" aria-pressed="true">English</button>
                 <button type="button" data-lang="es" aria-pressed="false">Español</button>
@@ -668,6 +692,7 @@
 
             <!-- lernhilfen -->
             <div class="view" id="panel-l" role="tabpanel" aria-labelledby="tab-l" data-view="l" hidden>
+              <p class="stage-tag"><span class="stage-num">5</span>Lernhilfen</p>
               <div class="sub-tabs" role="tablist">
                 <button id="subtab-sum" role="tab" aria-selected="true" aria-controls="subpanel-sum" data-sub="sum">Zusammenfassung</button>
                 <button id="subtab-cards" role="tab" aria-selected="false" aria-controls="subpanel-cards" data-sub="cards">Karteikarten</button>
@@ -1039,7 +1064,12 @@
     /* ===== demo: Startseite → Editor ===== */
     var appHome = document.getElementById("appHome");
     var app = document.getElementById("app");
-    function openDemoEditor() { appHome.hidden = true; app.hidden = false; }
+    function openDemoEditor() {
+      appHome.hidden = true; app.hidden = false;
+      if (window.matchMedia("(max-width:640px)").matches) {
+        app.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      }
+    }
     document.querySelectorAll(".home-tile, .home-row").forEach(function (el) {
       el.addEventListener("click", openDemoEditor);
     });
