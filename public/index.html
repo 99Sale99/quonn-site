@@ -184,7 +184,11 @@
     background:var(--accent); color:var(--accent-ink); text-decoration:none;
     display:inline-flex; align-items:center; gap:9px; transition:transform .16s ease,box-shadow .16s ease; cursor:pointer; }
   .btn.soft { background:transparent; color:var(--accent); }
-  .btn:hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+  .btn:not([aria-disabled="true"]):hover { transform:translateY(-1px); box-shadow:var(--shadow-md); }
+  .btn[aria-disabled="true"] { cursor:default; }
+  .soon-dot { width:6px; height:6px; border-radius:50%; background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-wash); flex:none; }
+  @media (prefers-reduced-motion:no-preference) { .soon-dot { animation:beat 3.2s ease-in-out infinite; } }
   .jump { font-family:"IBM Plex Mono",monospace; font-size:0.72rem; letter-spacing:0.06em;
     color:var(--ink-faint); text-transform:uppercase; text-decoration:none; }
   .jump:hover { color:var(--ink-dim); }
@@ -422,9 +426,14 @@
   .faq summary:hover { color:var(--accent); }
   .faq details > p { margin:0; padding:0 0 22px; color:var(--ink-dim); max-width:64ch; line-height:1.6; }
 
-  .incl { display:flex; flex-wrap:wrap; gap:10px; }
-  .incl span { font-family:"IBM Plex Mono",monospace; font-size:0.72rem; letter-spacing:0.03em;
-    text-transform:uppercase; color:var(--ink-dim); border:1px solid var(--line); border-radius:999px; padding:7px 13px; }
+  .incl-groups { display:grid; grid-template-columns:repeat(4,1fr); gap:22px 16px; }
+  .incl-group h4 { font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:0.68rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 10px; }
+  .incl { display:flex; flex-wrap:wrap; gap:8px; }
+  .incl span { font-family:"IBM Plex Mono",monospace; font-size:0.7rem; letter-spacing:0.02em;
+    color:var(--ink-dim); border:1px solid var(--line); border-radius:999px; padding:6px 12px; }
+  @media (max-width:760px) { .incl-groups { grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px) { .incl-groups { grid-template-columns:1fr; } }
   .buy { margin-top:34px; }
   .buy .price { font-family:"Bricolage Grotesque",sans-serif; font-weight:700;
     font-size:clamp(1.5rem,1.2rem + 1.4vw,2rem); color:var(--ink); letter-spacing:-0.02em; }
@@ -529,7 +538,7 @@
           <h1><span class="ln"><span>Du hast alles</span></span><span class="ln"><span>aufgenommen.</span></span><span class="ln soft"><span>Jetzt mach</span></span><span class="ln soft"><span>etwas daraus.</span></span></h1>
           <p class="sub reveal d2">Quonn transkribiert Vorlesungen, Interviews und Besprechungen lokal auf deinem Windows-PC – und macht daraus Zusammenfassung, Karteikarten, Quiz und Übersetzung.</p>
           <div class="cta-row reveal d3">
-            <span class="btn soft" aria-disabled="true">Demnächst im Microsoft&nbsp;Store</span>
+            <span class="btn soft" aria-disabled="true"><span class="soon-dot"></span>Demnächst im Microsoft&nbsp;Store</span>
             <span class="jump">29,99 € · Einmalkauf · kein Abo</span>
           </div>
         </div>
@@ -608,15 +617,15 @@
           </div>
 
           <div class="app-tabs" role="tablist">
-            <button role="tab" aria-selected="true" data-tab="t">Transkript</button>
-            <button role="tab" aria-selected="false" data-tab="p">Aufpoliert</button>
-            <button role="tab" aria-selected="false" data-tab="l">Lernhilfen</button>
-            <button role="tab" aria-selected="false" data-tab="e">Übersetzung</button>
+            <button id="tab-t" role="tab" aria-selected="true" aria-controls="panel-t" data-tab="t">Transkript</button>
+            <button id="tab-p" role="tab" aria-selected="false" aria-controls="panel-p" data-tab="p">Aufpoliert</button>
+            <button id="tab-l" role="tab" aria-selected="false" aria-controls="panel-l" data-tab="l">Lernhilfen</button>
+            <button id="tab-e" role="tab" aria-selected="false" aria-controls="panel-e" data-tab="e">Übersetzung</button>
           </div>
 
           <div class="app-body">
             <!-- transcript -->
-            <div class="view" data-view="t">
+            <div class="view" id="panel-t" role="tabpanel" aria-labelledby="tab-t" data-view="t">
               <div class="doc" id="doc">
                 <span class="sen" data-t="38"><span class="stamp">00:38</span>Stellen Sie sich ein Hotel mit unendlich vielen Zimmern vor – und alle sind belegt. Kommt ein neuer Gast, sagt der <span class="uncertain" id="unc">Portier</span><button class="ck" id="ck" type="button" title="Klingt richtig – abhaken" aria-label="Stelle als geprüft markieren"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button> trotzdem: Wir haben ein Zimmer für Sie.<span class="play-dot"></span></span>
                 <span class="sen" data-t="75"><span class="stamp">01:15</span>Der Trick ist einfach: Jeder Gast zieht ein Zimmer weiter. Der Gast aus Zimmer eins nach zwei, aus zwei nach drei, und so fort. Zimmer eins wird frei.<span class="play-dot"></span></span>
@@ -627,7 +636,7 @@
             </div>
 
             <!-- polished -->
-            <div class="view" data-view="p" hidden>
+            <div class="view" id="panel-p" role="tabpanel" aria-labelledby="tab-p" data-view="p" hidden>
               <div class="doc">
                 <span class="sen" style="cursor:default"><span class="stamp">00:38</span>Stellen Sie sich ein Hotel mit unendlich vielen Zimmern vor, und alle sind belegt. Kommt ein neuer Gast, sagt der Portier trotzdem: „Wir haben ein Zimmer für Sie."</span>
                 <span class="sen" style="cursor:default"><span class="stamp">01:15</span>Der Trick ist einfach: Jeder Gast zieht ein Zimmer weiter. Der Gast aus Zimmer eins nach zwei, aus zwei nach drei und so fort. Zimmer eins wird frei.</span>
@@ -638,7 +647,7 @@
             </div>
 
             <!-- übersetzung -->
-            <div class="view" data-view="e" hidden>
+            <div class="view" id="panel-e" role="tabpanel" aria-labelledby="tab-e" data-view="e" hidden>
               <div class="lang-pick" role="group" aria-label="Sprache der Übersetzung">
                 <button type="button" data-lang="en" aria-pressed="true">English</button>
                 <button type="button" data-lang="es" aria-pressed="false">Español</button>
@@ -654,15 +663,15 @@
             </div>
 
             <!-- lernhilfen -->
-            <div class="view" data-view="l" hidden>
+            <div class="view" id="panel-l" role="tabpanel" aria-labelledby="tab-l" data-view="l" hidden>
               <div class="sub-tabs" role="tablist">
-                <button role="tab" aria-selected="true" data-sub="sum">Zusammenfassung</button>
-                <button role="tab" aria-selected="false" data-sub="cards">Karteikarten</button>
-                <button role="tab" aria-selected="false" data-sub="glo">Glossar</button>
-                <button role="tab" aria-selected="false" data-sub="quiz">Quiz</button>
+                <button id="subtab-sum" role="tab" aria-selected="true" aria-controls="subpanel-sum" data-sub="sum">Zusammenfassung</button>
+                <button id="subtab-cards" role="tab" aria-selected="false" aria-controls="subpanel-cards" data-sub="cards">Karteikarten</button>
+                <button id="subtab-glo" role="tab" aria-selected="false" aria-controls="subpanel-glo" data-sub="glo">Glossar</button>
+                <button id="subtab-quiz" role="tab" aria-selected="false" aria-controls="subpanel-quiz" data-sub="quiz">Quiz</button>
               </div>
 
-              <div class="subv" data-sub="sum">
+              <div class="subv" id="subpanel-sum" role="tabpanel" aria-labelledby="subtab-sum" data-sub="sum">
                 <div class="sum">
                   <p><strong>Hilberts Hotel</strong> ist ein Gedankenexperiment des Mathematikers David Hilbert aus dem Jahr 1924. Es zeigt, dass ein unendliches Hotel selbst dann noch Gäste aufnehmen kann, wenn alle Zimmer belegt sind – indem die vorhandenen Gäste umziehen.</p>
                   <ul>
@@ -674,7 +683,7 @@
                 </div>
               </div>
 
-              <div class="subv" data-sub="cards" hidden>
+              <div class="subv" id="subpanel-cards" role="tabpanel" aria-labelledby="subtab-cards" data-sub="cards" hidden>
                 <div class="deck" id="deck">
                   <div class="prog"><span id="dnum">1 / 5</span><span class="bar2"><i id="dbar" style="width:20%"></i></span><span>Klick = umdrehen</span></div>
                   <div class="fcard" id="fcard">
@@ -698,7 +707,7 @@
                 </div>
               </div>
 
-              <div class="subv" data-sub="glo" hidden>
+              <div class="subv" id="subpanel-glo" role="tabpanel" aria-labelledby="subtab-glo" data-sub="glo" hidden>
                 <div class="glo">
                   <div class="row"><span class="term">Gedankenexperiment</span><span class="def">Eine gedanklich durchgespielte Situation, mit der ein abstraktes Prinzip veranschaulicht wird – ohne realen Aufbau.</span></div>
                   <div class="row"><span class="term">Unendliche Menge</span><span class="def">Eine Menge, die sich umkehrbar eindeutig einer ihrer echten Teilmengen zuordnen lässt – anders als jede endliche Menge.</span></div>
@@ -706,7 +715,7 @@
                 </div>
               </div>
 
-              <div class="subv" data-sub="quiz" hidden>
+              <div class="subv" id="subpanel-quiz" role="tabpanel" aria-labelledby="subtab-quiz" data-sub="quiz" hidden>
                 <div class="quiz" id="quiz"></div>
               </div>
             </div>
@@ -740,8 +749,8 @@
     <section class="band privacy">
       <div class="wrap">
         <span class="label">Datenschutz</span>
-        <h2>Es gibt keinen Server, den jemand angreifen könnte.</h2>
-        <p>Quonn arbeitet vollständig auf deinem Gerät. Kein Konto, das geleakt wird. Keine Cloud, in der etwas liegen bleibt. Deine Aufnahmen, Transkripte und Übersetzungen bleiben da, wo sie hingehören: bei dir.</p>
+        <h2>Deine Aufnahmen verlassen deinen PC nie.</h2>
+        <p>Keine Cloud-Verarbeitung. Kein Konto, das geleakt wird. Deine Aufnahmen, Transkripte und Übersetzungen bleiben da, wo sie hingehören: bei dir. (Diese Website selbst läuft natürlich über einen Hosting-Anbieter – Details dazu unten in der Datenschutzerklärung.)</p>
         <div class="pts">
           <div><b>Lokal</b><span>Verarbeitung und Speicherung nur auf deinem Windows-PC.</span></div>
           <div><b>Offline</b><span>Internet nur einmal – für einen optionalen Modell-Download.</span></div>
@@ -765,19 +774,39 @@
       <div class="wrap">
         <span class="label">Alles dabei</span>
         <p class="lead">Ein Kauf. Kein Nachschlag.</p>
-        <div class="incl">
-          <span>Fast 100 Sprachen</span>
-          <span>Word · PDF · HTML · TXT · Markdown · SRT · VTT</span>
-          <span>Zusammenfassung</span>
-          <span>Karteikarten &amp; Anki</span>
-          <span>Glossar</span>
-          <span>Quiz</span>
-          <span>Text aufpolieren</span>
-          <span>Übersetzung EN · DE · ES · RU</span>
-          <span>Ganze Ordner auf einmal</span>
-          <span>Eigene Aufnahme (Mikrofon)</span>
-          <span>Sprechertrennung</span>
-          <span>Bibliothekssuche</span>
+        <div class="incl-groups">
+          <div class="incl-group">
+            <h4>Transkription</h4>
+            <div class="incl">
+              <span>Fast 100 Sprachen</span>
+              <span>Sprechertrennung</span>
+              <span>Eigene Aufnahme (Mikrofon)</span>
+              <span>Ganze Ordner auf einmal</span>
+            </div>
+          </div>
+          <div class="incl-group">
+            <h4>Aufbereitung</h4>
+            <div class="incl">
+              <span>Zusammenfassung</span>
+              <span>Text aufpolieren</span>
+              <span>Glossar</span>
+              <span>Übersetzung EN · DE · ES · RU</span>
+              <span>Bibliothekssuche</span>
+            </div>
+          </div>
+          <div class="incl-group">
+            <h4>Lernen</h4>
+            <div class="incl">
+              <span>Karteikarten &amp; Anki</span>
+              <span>Quiz</span>
+            </div>
+          </div>
+          <div class="incl-group">
+            <h4>Export</h4>
+            <div class="incl">
+              <span>Word · PDF · HTML · TXT · Markdown · SRT · VTT</span>
+            </div>
+          </div>
         </div>
         <div class="buy">
           <span class="price">29,99&nbsp;€ <span style="font-weight:400;font-size:0.62em;color:var(--ink-dim);">einmalig</span></span>
@@ -791,12 +820,20 @@
         <span class="label">Häufige Fragen</span>
         <div class="faq">
           <details>
+            <summary>Ist Quonn wirklich komplett offline?</summary>
+            <p>Ja. Die Verarbeitung deiner Aufnahmen läuft ausschließlich auf deinem PC. Eine Internetverbindung brauchst du nur einmal, falls du freiwillig ein größeres Erkennungs- oder KI-Modell nachlädst – danach arbeitet Quonn dauerhaft offline.</p>
+          </details>
+          <details>
             <summary>Läuft Quonn auch ohne Grafikkarte?</summary>
             <p>Ja. Eine Grafikkarte macht die Transkription schneller, nötig ist sie nicht. Auch ein älterer Laptop schafft es – es dauert dann länger, läuft aber im Hintergrund weiter.</p>
           </details>
           <details>
-            <summary>Brauche ich eine Internetverbindung?</summary>
-            <p>Zum Arbeiten nie. Einmal – falls du in den Einstellungen ein größeres Erkennungsmodell für mehr Genauigkeit nachlädst. Danach ist Quonn dauerhaft offline.</p>
+            <summary>Welche Windows-Version brauche ich?</summary>
+            <p>Windows 10 oder 11 (64-bit) mit einem Prozessor, der AVX2 unterstützt – das ist bei praktisch jedem PC der letzten zehn Jahre der Fall. Quonn prüft das beim Start selbst und sagt dir Bescheid, falls nicht.</p>
+          </details>
+          <details>
+            <summary>Welche Audio-/Videoformate werden unterstützt?</summary>
+            <p>So gut wie alle gängigen – MP3, WAV, M4A, MP4, MOV und viele mehr. Auch ganze Ordner mit gemischten Formaten funktionieren.</p>
           </details>
           <details>
             <summary>Wie lang dürfen die Aufnahmen sein?</summary>
@@ -817,6 +854,10 @@
           <details>
             <summary>Erkennt Quonn, wer gerade spricht?</summary>
             <p>Bei bis zu drei klaren Stimmen ohne große Nebengeräusche funktioniert die Sprechertrennung gut – unabhängig von der Sprache. Bei vielen Leuten durcheinander (Party, volle Räume) ist das offline aktuell technisch nicht zuverlässig lösbar. Ich sag lieber ehrlich, wo die Grenze liegt, als es schönzureden.</p>
+          </details>
+          <details>
+            <summary>Was passiert bei einem neuen PC?</summary>
+            <p>Deine Aufnahmen und Modelle liegen lokal bei dir, nicht in einem Konto. Auf dem neuen Rechner installierst du Quonn neu, lädst bei Bedarf die optionalen Modelle erneut und ziehst deine Original-Dateien wieder rein.</p>
           </details>
           <details>
             <summary>Was passiert bei einem Update?</summary>
