@@ -265,6 +265,33 @@
     .demo-side { display:none; }
   }
 
+  /* Bibliothekssuche in der Demo (2026-09-13) – zeigt die Frage-Antwort-
+     Funktion, statt sie nur als Wort in einer Liste zu erwähnen. */
+  .search-back { margin-left:auto; flex:none; font-family:"IBM Plex Mono",monospace; font-size:0.68rem;
+    letter-spacing:0.05em; text-transform:uppercase; color:var(--ink-dim); background:none; border:none;
+    cursor:pointer; padding:6px 4px; }
+  .search-back:hover { color:var(--ink); }
+  .search-demo { max-width:64ch; }
+  .search-box { display:flex; align-items:center; gap:10px; padding:14px 16px; border:1px solid var(--line-strong);
+    border-radius:12px; background:var(--surface); color:var(--ink-faint); }
+  .search-box svg { width:18px; height:18px; flex:none; }
+  .search-box span { font-size:0.94rem; }
+  .search-examples { display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin-top:16px; }
+  .se-label { font-family:"IBM Plex Mono",monospace; font-size:0.68rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--ink-faint); }
+  .se-chip { font:inherit; font-size:0.84rem; color:var(--ink-dim); background:var(--panel);
+    border:1px solid var(--line); border-radius:999px; padding:9px 15px; cursor:pointer; text-align:left; }
+  .se-chip:hover { border-color:var(--line-strong); color:var(--ink); }
+  .search-answer { margin-top:22px; padding:20px 22px; border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--surface); box-shadow:var(--shadow-sm); }
+  .sa-label { font-family:"IBM Plex Mono",monospace; font-size:0.64rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .sa-text { font-family:"Bricolage Grotesque",sans-serif; font-weight:600; font-size:1.05rem;
+    color:var(--ink); line-height:1.4; }
+  .sa-src { margin-top:10px; font-family:"IBM Plex Mono",monospace; font-size:0.7rem; color:var(--ink-faint); }
+  .sa-quote { margin:10px 0 0; padding:10px 14px; border-left:2px solid var(--accent-line);
+    color:var(--ink-dim); font-size:0.88rem; font-style:italic; }
+
   .app-tabs { display:flex; gap:2px; padding:0 12px; background:var(--panel); border-bottom:1px solid var(--line); overflow-x:auto; }
   .app-tabs button { font-family:"IBM Plex Mono",monospace; font-size:0.72rem; letter-spacing:0.05em;
     text-transform:uppercase; border:none; background:none; color:var(--ink-faint); padding:12px 14px;
@@ -664,7 +691,7 @@
                 <span class="ht-t">Text übersetzen</span>
                 <span class="ht-d">Text ohne Aufnahme direkt übersetzen.</span>
               </button>
-              <button type="button" class="home-tile">
+              <button type="button" class="home-tile" id="openDemoSearch">
                 <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
                 <span class="ht-t">Bibliothek durchsuchen</span>
                 <span class="ht-d">Über alle Aufnahmen hinweg suchen oder fragen.</span>
@@ -822,6 +849,54 @@
         </div>
         </div>
         </div>
+        <div class="app" id="appSearch" hidden>
+        <div class="demo-win">
+          <aside class="demo-side">
+            <div class="ds-head"><span class="app-glyph">Q</span><span class="ds-t">Aufnahmen</span></div>
+            <div class="ds-group">Heute</div>
+            <button type="button" class="ds-row" data-open-editor>
+              <span class="ds-name">Hilberts Hotel – Vorlesung.mp3</span>
+              <span class="ds-meta">12:04</span>
+            </button>
+            <div class="ds-row ds-inert">
+              <span class="ds-name">Sprachnotiz</span>
+              <span class="ds-meta">2:18</span>
+            </div>
+            <div class="ds-row ds-inert">
+              <span class="ds-name">Team-Meeting</span>
+              <span class="ds-meta">34:02</span>
+            </div>
+          </aside>
+          <div class="demo-main">
+            <div class="app-bar">
+              <span class="app-glyph">Q</span>
+              <span class="app-file">Bibliothek durchsuchen</span>
+              <button type="button" class="search-back" id="searchBack">← Startseite</button>
+            </div>
+            <div class="app-body">
+              <p class="stage-tag">Bibliothek durchsuchen</p>
+              <div class="search-demo">
+                <div class="search-box">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span id="searchQ">Frag etwas – über alle deine Aufnahmen hinweg …</span>
+                </div>
+                <div class="search-examples" id="searchExamples">
+                  <span class="se-label">Zum Beispiel:</span>
+                  <button type="button" class="se-chip" data-q="Wie viele Zimmer hat das Hotel?" data-a="Das Hotel hat unendlich viele Zimmer – und trotzdem sind alle belegt." data-quote="Stellen Sie sich ein Hotel mit unendlich vielen Zimmern vor – und alle sind belegt." data-src="Hilberts Hotel – Vorlesung.mp3" data-t="00:38">Wie viele Zimmer hat das Hotel?</button>
+                  <button type="button" class="se-chip" data-q="Wie kommen die neuen Gäste unter?" data-a="Jeder vorhandene Gast verdoppelt seine Zimmernummer – dadurch werden alle ungeraden Zimmer frei." data-quote="Jeder alte Gast verdoppelt seine Zimmernummer. Alle geraden Zimmer sind dann belegt, alle ungeraden werden frei." data-src="Hilberts Hotel – Vorlesung.mp3" data-t="02:04">Wie kommen die neuen Gäste unter?</button>
+                </div>
+                <div class="search-answer" id="searchAnswer" hidden>
+                  <p class="sa-label">Antwort</p>
+                  <p class="sa-text" id="saText"></p>
+                  <div class="sa-src" id="saSrc"></div>
+                  <blockquote class="sa-quote" id="saQuote"></blockquote>
+                </div>
+              </div>
+              <p class="doc-note">Antworten stützen sich immer auf ein wörtliches Zitat aus deinen Aufnahmen. Findet Quonn keine passende Stelle, sagt es das ehrlich – statt zu raten.</p>
+            </div>
+          </div>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -843,6 +918,7 @@
             <p>Ein Interview, eine Sprachnachricht, das Familienvideo aus dem Ausland. Fast 100 Sprachen werden automatisch erkannt, übersetzt wird nach Englisch, Deutsch, Spanisch, Russisch.</p>
           </div>
         </div>
+        <p style="margin-top:26px;color:var(--ink-dim);max-width:60ch;">Und über alle Aufnahmen hinweg: <strong style="color:var(--ink);">Quonn merkt sich alles, was je gesagt wurde.</strong> Frag „Wann hat Max gesagt, dass er das übernimmt?“ – Quonn durchsucht deine gesamte Sammlung und antwortet nur mit dem, was tatsächlich gesagt wurde, mit Fundstelle zum Nachhören. Keine Vermutung, keine Erfindung.</p>
       </div>
     </section>
 
@@ -896,7 +972,7 @@
               <span>Text aufpolieren</span>
               <span>Glossar</span>
               <span>Übersetzung EN · DE · ES · RU</span>
-              <span>Bibliothekssuche</span>
+              <span>Bibliothekssuche &amp; Fragen an alle Aufnahmen</span>
             </div>
           </div>
           <div class="incl-group">
@@ -1154,17 +1230,39 @@
       }
     }
 
-    /* ===== demo: Startseite → Editor ===== */
+    /* ===== demo: Startseite → Editor / Bibliothekssuche ===== */
     var appHome = document.getElementById("appHome");
     var app = document.getElementById("app");
+    var appSearch = document.getElementById("appSearch");
     function openDemoEditor() {
-      appHome.hidden = true; app.hidden = false;
+      appHome.hidden = true; appSearch.hidden = true; app.hidden = false;
       if (window.matchMedia("(max-width:640px)").matches) {
         app.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
       }
     }
-    document.querySelectorAll(".home-tile, .home-row, [data-open-editor]").forEach(function (el) {
+    function openDemoSearch() {
+      appHome.hidden = true; app.hidden = true; appSearch.hidden = false;
+      if (window.matchMedia("(max-width:640px)").matches) {
+        appSearch.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      }
+    }
+    document.querySelectorAll(".home-tile:not(#openDemoSearch), .home-row, [data-open-editor]").forEach(function (el) {
       el.addEventListener("click", openDemoEditor);
+    });
+    document.getElementById("openDemoSearch").addEventListener("click", openDemoSearch);
+    document.getElementById("searchBack").addEventListener("click", function () {
+      appSearch.hidden = true; app.hidden = true; appHome.hidden = false;
+    });
+    var searchAnswerEl = document.getElementById("searchAnswer");
+    var searchQEl = document.getElementById("searchQ");
+    document.querySelectorAll(".se-chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        searchQEl.textContent = chip.dataset.q;
+        document.getElementById("saText").textContent = chip.dataset.a;
+        document.getElementById("saSrc").textContent = chip.dataset.src + " · " + chip.dataset.t;
+        document.getElementById("saQuote").textContent = "„" + chip.dataset.quote + "“";
+        searchAnswerEl.hidden = false;
+      });
     });
     var MAXT = 200;
     function fmt(sec) { var m = Math.floor(sec / 60), s = Math.floor(sec % 60); return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s; }
