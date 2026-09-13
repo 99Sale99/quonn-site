@@ -357,14 +357,19 @@
   .fc-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-md);
     padding:24px 22px; display:flex; flex-direction:column; }
-  .fc-face .tag { font-family:"IBM Plex Mono",monospace; font-size:0.62rem; letter-spacing:0.13em;
+  .fc-face .tag { flex:none; font-family:"IBM Plex Mono",monospace; font-size:0.62rem; letter-spacing:0.13em;
     text-transform:uppercase; color:var(--ink-faint); display:flex; align-items:center; gap:7px; }
   .fc-face .tag::before { content:""; width:5px; height:5px; border-radius:50%; background:currentColor; }
   .fc-face.back { transform:rotateY(180deg); }
   .fc-face.back .tag { color:var(--accent); }
-  .fc-face .txt { margin-top:auto; font-size:1.08rem; line-height:1.42; font-weight:500; }
-  .fc-face .hint { margin-top:12px; font-family:"IBM Plex Mono",monospace; font-size:0.62rem;
-    letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-faint); }
+  /* Nutzer-Fund 2026-09-13: "margin-top:auto" schob den Text ans untere Ende
+     der Karte – bei kurzen Fragen blieb oben ein leerer, schief wirkender
+     Bereich. Die echte App zentriert den Text in der Mitte (StudyPanel.tsx,
+     CardFace: "grid flex-1 place-items-center"); hier nachgezogen. */
+  .fc-face .txt { flex:1; display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:1.08rem; line-height:1.42; font-weight:500; padding:10px 0; }
+  .fc-face .hint { flex:none; font-family:"IBM Plex Mono",monospace; font-size:0.62rem;
+    letter-spacing:0.04em; text-transform:uppercase; color:var(--ink-faint); text-align:center; }
   @media (prefers-reduced-motion:reduce) {
     .fcard .inner { transition:none; } .fcard.turned .inner { transform:none; }
     .fc-face.back { transform:none; opacity:0; transition:opacity .2s; }
