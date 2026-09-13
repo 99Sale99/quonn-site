@@ -1,0 +1,15 @@
+# Quonn - https://quonn.app
+# Suchmaschinen und KI-Systeme duerfen die Seite crawlen und referenzieren.
+
+User-agent: *
+Allow: /
+
+# Content Signals (https://developers.cloudflare.com/bots/additional-configurations/content-signals/)
+# search:   Suchindex + Suchergebnisse (Snippets/Links) - erlaubt.
+# ai-input: Echtzeit-Nutzung durch KI-Systeme, z. B. Grounding/RAG bei einer
+#           Nutzerfrage - erlaubt, damit Assistenten wie ChatGPT/Gemini die
+#           Seite korrekt zusammenfassen koennen.
+# ai-train: Training oder Fine-Tuning von KI-Modellen auf diesem Inhalt -
+#           NICHT erlaubt. Ausdruecklicher Rechtevorbehalt nach Art. 4 der
+#           EU-Richtlinie 2019/790 (Text- und Data-Mining).
+Content-Signal: search=yes, ai-input=yes, ai-train=no
