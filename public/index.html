@@ -46,10 +46,10 @@
 <style>
   :root {
     --ground:#f1f4f3; --surface:#fcfdfd; --surface-2:#e8ecea; --panel:#f7f9f8;
-    --ink:#15201e; --ink-dim:#53605d; --ink-faint:#6f7a77;
+    --ink:#15201e; --ink-dim:#53605d; --ink-faint:#5a6864;
     --accent:#0066cc; --accent-deep:#004a99; --accent-ink:#ffffff;
     --accent-wash:#0066cc14; --accent-line:#0066cc33;
-    --warn:#9d661a; --warn-wash:#9d661a1c;
+    --warn:#8a5a17; --warn-wash:#8a5a171c;
     --ok:#1f7a4d; --ok-wash:#1f7a4d18; --err:#a5352f; --err-wash:#a5352f16;
     --line:#dfe4e2; --line-strong:#cbd3d0; --wave:#bfc9c7;
     --onpetrol:#eef4f3; --onpetrol-dim:#a9c8e8; --onpetrol-line:#ffffff26;
@@ -410,6 +410,10 @@
     padding:clamp(24px,3vw,38px); box-shadow:var(--shadow-sm); max-width:66ch; }
   .know p { color:var(--ink-dim); } .know p + p { margin-top:14px; }
   .know strong { color:var(--ink); font-weight:600; }
+  .know-sub { margin-top:18px; font-family:"IBM Plex Mono",monospace; font-size:0.7rem;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); }
+  .know-list { margin:12px 0 0; padding-left:20px; display:flex; flex-direction:column; gap:10px; }
+  .know-list li { color:var(--ink-dim); line-height:1.55; }
 
   /* faq */
   .faq { max-width:760px; }
@@ -536,7 +540,7 @@
         <div class="hero-lede">
           <span class="kicker label reveal">Transkription &amp; Lernhilfen · Windows</span>
           <h1><span class="ln"><span>Du hast alles</span></span><span class="ln"><span>aufgenommen.</span></span><span class="ln soft"><span>Jetzt mach</span></span><span class="ln soft"><span>etwas daraus.</span></span></h1>
-          <p class="sub reveal d2">Quonn transkribiert Vorlesungen, Interviews und Besprechungen lokal auf deinem Windows-PC – und macht daraus Zusammenfassung, Karteikarten, Quiz und Übersetzung.</p>
+          <p class="sub reveal d2">Läuft komplett offline auf deinem Windows-PC: Quonn transkribiert Vorlesungen, Interviews und Besprechungen – und macht daraus Zusammenfassung, Karteikarten, Quiz und Übersetzung.</p>
           <div class="cta-row reveal d3">
             <span class="btn soft" aria-disabled="true"><span class="soon-dot"></span>Demnächst im Microsoft&nbsp;Store</span>
             <span class="jump">29,99 € · Einmalkauf · kein Abo</span>
@@ -764,8 +768,13 @@
       <div class="wrap">
         <span class="label">Ehrlich gesagt</span>
         <div class="know">
-          <p>Quonn erkennt <strong>gesprochene Sprache</strong> – keine Musik oder Songtexte. Die Erkennung ist präzise, aber nicht perfekt: bei starkem Hintergrundgeräusch oder mehreren gleichzeitigen Sprechern lohnt sich ein Blick über das Ergebnis. Unsichere Stellen markiert Quonn, damit du sie sofort findest.</p>
-          <p>Ein Erkennungsmodell ist <strong>eingebaut</strong> – nach der Installation sofort einsatzbereit. Größere Modelle für mehr Genauigkeit lädst du bei Bedarf einmalig; danach arbeitet Quonn dauerhaft offline.</p>
+          <p>Quonn erkennt <strong>gesprochene Sprache</strong> – keine Musik oder Songtexte. Ein Erkennungsmodell ist eingebaut und nach der Installation sofort einsatzbereit; größere Modelle für mehr Genauigkeit lädst du bei Bedarf einmalig nach, danach arbeitet Quonn dauerhaft offline.</p>
+          <p class="know-sub">Was Quonn (noch) nicht kann:</p>
+          <ul class="know-list">
+            <li>Bei starkem Hintergrundgeräusch oder mehreren gleichzeitig sprechenden Personen sinkt die Genauigkeit – unsichere Stellen markiert Quonn, damit du sie sofort findest.</li>
+            <li>Sprechertrennung funktioniert gut bei bis zu drei klaren Stimmen ohne große Nebengeräusche, nicht bei vielen Leuten durcheinander (Party, volle Räume).</li>
+            <li>Übersetzung gibt es aktuell für Englisch, Deutsch, Spanisch und Russisch – weitere Sprachen erst, wenn sie denselben Qualitätstest bestehen.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -871,7 +880,7 @@
       <div class="wrap">
         <span class="label">Warum Quonn</span>
         <div class="note">
-          <p>Ich wollte Aufnahmen mitschreiben lassen, ohne sie irgendwo hochzuladen – und fand nur Abos und Cloud-Dienste. Also habe ich Quonn gebaut: erst für mich, dann so weit gebracht, dass es auch für andere taugt.</p>
+          <p>Ich wollte meine eigenen Vorlesungsaufnahmen und Gespräche mitschreiben lassen, ohne sie in eine Cloud hochzuladen, für die ich jeden Monat zahle. Für Windows gab es dafür nichts Vernünftiges – also habe ich Quonn gebaut: erst nur für mich, jetzt fertig genug für andere.</p>
           <p>Alles läuft auf deinem Rechner. Du zahlst einmal. Kein Konto, kein Server, keine monatliche Rechnung.</p>
           <p class="sign">— Der Entwickler von Quonn</p>
         </div>
@@ -910,10 +919,11 @@
       <h1>Datenschutzerklärung</h1>
       <p class="updated">Stand: 13. September 2026</p>
       <div class="box"><p><strong>Kurzfassung:</strong> Quonn verarbeitet alles lokal auf deinem Gerät. Es gibt keinen Server, kein Konto und kein Tracking.</p></div>
+      <p>Diese Erklärung deckt drei getrennte Bereiche ab: <strong>(A)</strong> die App Quonn auf deinem Rechner, <strong>(B)</strong> diese Website, und <strong>(C)</strong> optionale externe Downloads, die die App auf deinen ausdrücklichen Wunsch von Hugging Face anstößt (Abschnitt „Internetverbindungen" weiter unten).</p>
       <h2>Verantwortlicher</h2>
       <p>Verantwortlich für die Datenverarbeitung im Zusammenhang mit dieser Website und der App Quonn ist der im Impressum genannte Anbieter:</p>
       <p>Saša Vuksan<br>c/o Online-Impressum #10905<br>Europaring 90<br>53757 Sankt Augustin<br>Deutschland<br>E-Mail: <!--email_off--><a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a><!--/email_off--></p>
-      <h2>Die App Quonn</h2>
+      <h2>(A) Die App Quonn</h2>
       <h3>Welche Daten verarbeitet Quonn?</h3>
       <ul>
         <li>Deine Audio- und Videodateien sowie die daraus erzeugten Transkripte, Übersetzungen und Lernhilfen werden ausschließlich auf deinem Computer verarbeitet und gespeichert (im lokalen App-Datenordner deines Windows-Benutzerkontos). Sie werden zu keinem Zeitpunkt an mich oder Dritte übertragen.</li>
@@ -923,11 +933,11 @@
         <li><strong>Eigene Aufnahme (optional):</strong> Über „Aufnahme starten" kannst du direkt in Quonn eine Tonaufnahme über dein Mikrofon anfertigen. Die Aufnahme wird ausschließlich lokal auf deinem Rechner gespeichert und wie jede andere hinzugefügte Datei behandelt. Das Mikrofon nimmt alles auf, was im Raum hörbar ist – nicht nur deine eigene Stimme. Wenn dabei andere Personen zu hören sind, bist <strong>du</strong> dafür verantwortlich, vorher deren Zustimmung einzuholen. Quonn ist ein allgemeines Aufnahme-Werkzeug wie ein Diktiergerät – für die rechtmäßige Nutzung ist ausschließlich der Nutzer verantwortlich.</li>
         <li><strong>System-Ton (optional):</strong> Beim Starten einer eigenen Aufnahme kannst du zusätzlich den System-Ton mit aufnehmen (z. B. einen Video-Call). Das nimmt auch Stimmen anderer Personen auf, die über deine Lautsprecher zu hören sind. Das gesprochene Wort einer anderen Person ohne deren Einwilligung aufzunehmen ist in Deutschland eine Straftat (§201 StGB) und kann zusätzlich die DSGVO betreffen. Quonn zeigt vor jedem Einschalten dieser Funktion einen entsprechenden Warnhinweis – <strong>du</strong> bist dafür verantwortlich, vorher die Zustimmung aller Beteiligten einzuholen; Quonn kann das technisch nicht automatisch tun, da es kein Teilnehmer des jeweiligen Gesprächs ist. Auch diese Aufnahme bleibt ausschließlich lokal auf deinem Rechner.</li>
       </ul>
-      <h3>Internetverbindungen</h3>
+      <h3>(C) Internetverbindungen</h3>
       <p>Quonn funktioniert vollständig offline. Eine Internetverbindung wird nur in einem einzigen Fall genutzt: Wenn du in den Einstellungen freiwillig ein zusätzliches Erkennungs- oder KI-Modell herunterlädst, lädt die App diese Datei direkt von Hugging Face (huggingface.co). Es werden keine personenbezogenen Daten von dir übermittelt. Es gelten die Datenschutzbestimmungen von Hugging Face.</p>
       <h3>Speicherung und Löschung</h3>
       <p>Alle Daten liegen lokal. Du kannst einzelne Aufnahmen jederzeit in der App löschen oder die App vollständig deinstallieren; damit werden die zugehörigen Daten entfernt.</p>
-      <h2>Diese Website</h2>
+      <h2>(B) Diese Website</h2>
       <p>Diese Website wird bei Cloudflare Pages gehostet (Anbieter: Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA). Beim Aufruf der Seite erstellt der Anbieter technisch notwendige Server-Protokolle (u. a. IP-Adresse, Zeitpunkt des Zugriffs, aufgerufene Seite), um die Auslieferung und Sicherheit der Seite zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mit Cloudflare besteht ein Auftragsverarbeitungsvertrag; die Übermittlung in die USA ist durch die Standardvertragsklauseln der EU-Kommission abgesichert.</p>
       <p>Diese Website setzt keine Cookies und bindet keine Analyse- oder Tracking-Dienste ein. Alle Schriften werden lokal vom Server dieser Website geladen; es findet keine Verbindung zu Google Fonts oder anderen externen Anbietern statt.</p>
       <p>Wenn du zwischen heller und dunkler Ansicht wechselst, wird diese Auswahl lokal in deinem Browser gespeichert (localStorage). Diese Angabe verlässt deinen Browser nicht und wird nicht an einen Server übertragen.</p>
@@ -939,10 +949,11 @@
       <hr>
       <h2>English</h2>
       <div class="box"><p><strong>Summary:</strong> Quonn processes everything locally on your device. There is no server, no account and no tracking.</p></div>
+      <p>This notice covers three separate areas: <strong>(A)</strong> the Quonn app on your computer, <strong>(B)</strong> this website, and <strong>(C)</strong> optional external downloads the app triggers at your explicit request from Hugging Face (see "Internet connections" below).</p>
       <h3>Controller</h3>
       <p>Responsible for the data processing in connection with this website and the Quonn app is the provider named in the imprint (Impressum):</p>
       <p>Saša Vuksan<br>c/o Online-Impressum #10905<br>Europaring 90<br>53757 Sankt Augustin<br>Germany<br>Email: <!--email_off--><a href="mailto:kontakt@quonn.app">kontakt@quonn.app</a><!--/email_off--></p>
-      <h3>What data does Quonn process?</h3>
+      <h3>(A) What data does Quonn process?</h3>
       <ul>
         <li>Your audio and video files, and the transcripts, translations and study aids generated from them, are processed and stored solely on your computer (in the local app data folder of your Windows user account). They are never transmitted to me or to any third party.</li>
         <li>Quonn collects no usage data, telemetry, crash reports or device identifiers, and does not "phone home".</li>
@@ -951,11 +962,11 @@
         <li><strong>Own recording (optional):</strong> Via "Start recording" you can make an audio recording directly in Quonn using your microphone. The recording is stored exclusively on your own computer and treated like any other added file. The microphone captures everything audible in the room – not just your own voice. If other people are audible, <strong>you</strong> are responsible for obtaining their consent beforehand. Quonn is a general-purpose recording tool, like a dictaphone – responsibility for lawful use lies solely with the user.</li>
         <li><strong>System audio (optional):</strong> When starting your own recording, you can also record the system audio (e.g. a video call). This also captures other people's voices audible through your speakers. Recording the spoken word of another person without their consent is a criminal offense in Germany (§201 StGB) and may also fall under GDPR. Quonn shows a corresponding warning every time before you turn this feature on – <strong>you</strong> are responsible for obtaining the consent of everyone involved beforehand; Quonn cannot do this automatically, since it is not a participant in the conversation. This recording, too, stays exclusively local on your computer.</li>
       </ul>
-      <h3>Internet connections</h3>
+      <h3>(C) Internet connections</h3>
       <p>Quonn works fully offline. An internet connection is used in one case only: if you voluntarily download an additional recognition or AI model from the settings, the app downloads that file directly from Hugging Face (huggingface.co). No personal data about you is transmitted. Hugging Face's privacy terms apply to that transfer.</p>
       <h3>Storage and deletion</h3>
       <p>All data is local. You can delete individual recordings in the app at any time, or uninstall the app entirely, which removes the associated data.</p>
-      <h3>This website</h3>
+      <h3>(B) This website</h3>
       <p>This website is hosted by Cloudflare Pages (provider: Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA). When you visit the site, the provider technically creates server logs (including IP address, time of access, page requested) to ensure delivery and security of the site. The legal basis is Art. 6(1)(f) GDPR. A data processing agreement is in place with Cloudflare; the transfer to the USA is safeguarded by the European Commission's Standard Contractual Clauses.</p>
       <p>This website does not use cookies and does not embed any analytics or tracking services. All fonts are loaded locally from this website's own server; no connection is made to Google Fonts or other external providers.</p>
       <p>If you switch between light and dark view, this choice is stored locally in your browser (localStorage). This information never leaves your browser and is not transmitted to any server.</p>
