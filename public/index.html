@@ -9,12 +9,12 @@
 <link rel="apple-touch-icon" href="/icon-180.png">
 <meta name="theme-color" content="#f1f4f3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a100f" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Quonn transkribiert Vorlesungen, Interviews und Besprechungen offline auf deinem Windows-PC – mit Zusammenfassung, Karteikarten, Quiz und Übersetzung. Einmalkauf, kein Abo, kein Konto.">
+<meta name="description" content="Quonn transkribiert Vorlesungen, Interviews und Forschungsmaterial offline auf deinem Windows-PC – liest auch PDFs, Fotos und eingefügten Text. Mit Zusammenfassung, Karteikarten, Quiz und Übersetzung. Einmalkauf, kein Abo, kein Konto.">
 <link rel="canonical" href="https://quonn.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://quonn.app/">
 <meta property="og:title" content="Quonn – Transkription, offline für Windows">
-<meta property="og:description" content="Vorlesungen, Interviews und Besprechungen Wort für Wort – lokal auf deinem Windows-PC. Zusammenfassung, Karteikarten, Quiz, Übersetzung. Einmalkauf, kein Abo.">
+<meta property="og:description" content="Vorlesungen, Interviews und Forschungsmaterial Wort für Wort – lokal auf deinem Windows-PC. Auch PDFs, Fotos und Text. Zusammenfassung, Karteikarten, Quiz, Übersetzung. Einmalkauf, kein Abo.">
 <meta property="og:locale" content="de_DE">
 <meta property="og:image" content="https://quonn.app/og.png">
 <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
   "name": "Quonn",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Windows 10, Windows 11",
-  "description": "Offline-Transkription für Windows: schreibt Vorlesungen, Interviews und Besprechungen Wort für Wort mit und erzeugt Zusammenfassung, Karteikarten, Quiz und Übersetzung. Alles lokal, kein Konto, kein Server.",
+  "description": "Offline-Transkription für Windows: schreibt Vorlesungen, Interviews und Forschungsmaterial Wort für Wort mit, liest auch PDFs, Fotos und eingefügten Text, und erzeugt Zusammenfassung, Karteikarten, Quiz und Übersetzung. Alles lokal, kein Konto, kein Server.",
   "url": "https://quonn.app/",
   "softwareVersion": "1.0",
   "offers": {
@@ -491,7 +491,7 @@
   .faq summary:hover { color:var(--accent); }
   .faq details > p { margin:0; padding:0 0 22px; color:var(--ink-dim); max-width:64ch; line-height:1.6; }
 
-  .incl-groups { display:grid; grid-template-columns:repeat(4,1fr); gap:22px 16px; }
+  .incl-groups { display:grid; grid-template-columns:repeat(3,1fr); gap:22px 16px; }
   .incl-group h4 { font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:0.68rem;
     letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 10px; }
   .incl { display:flex; flex-wrap:wrap; gap:8px; }
@@ -617,8 +617,8 @@
       <div class="wrap">
         <div class="hero-lede">
           <span class="kicker label reveal">Transkription &amp; Lernhilfen · Windows</span>
-          <h1><span class="ln"><span>Du hast alles</span></span> <span class="ln"><span>aufgenommen.</span></span> <span class="ln soft"><span>Jetzt mach</span></span> <span class="ln soft"><span>etwas daraus.</span></span></h1>
-          <p class="sub reveal d2">Läuft komplett offline auf deinem Windows-PC: Quonn transkribiert Vorlesungen, Interviews und Besprechungen – und macht daraus Zusammenfassung, Karteikarten, Quiz und Übersetzung.</p>
+          <h1><span class="ln"><span>Aus deiner Aufnahme</span></span> <span class="ln"><span>wird Lernstoff.</span></span></h1>
+          <p class="sub reveal d2">Quonn transkribiert Vorlesungen, Interviews und Forschungsmaterial offline auf deinem Windows-PC – und macht daraus Zusammenfassungen, Karteikarten, Quiz und Übersetzungen. Nichts verlässt deinen Rechner.</p>
           <div class="cta-row reveal d3">
             <span class="btn soft" aria-disabled="true"><span class="soon-dot"></span>Demnächst im Microsoft&nbsp;Store</span>
             <span class="jump">29,99 € · Einmalkauf · kein Abo</span>
@@ -684,7 +684,7 @@
               <button type="button" class="home-tile">
                 <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12v0M8 8v8M12 5v14M16 8v8M20 12v0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
                 <span class="ht-t">Datei reinziehen</span>
-                <span class="ht-d">Audio, Video oder Notiz zum Transkribieren auswählen.</span>
+                <span class="ht-d">Audio, Video, PDF, Word, PowerPoint oder Fotos auswählen.</span>
               </button>
               <button type="button" class="home-tile">
                 <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" stroke="currentColor" stroke-width="2"/></svg></span>
@@ -695,6 +695,16 @@
                 <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
                 <span class="ht-t">Bibliothek durchsuchen</span>
                 <span class="ht-d">Über alle Aufnahmen hinweg suchen oder fragen.</span>
+              </button>
+              <button type="button" class="home-tile">
+                <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 3.5V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v.5" stroke="currentColor" stroke-width="2"/><path d="M9.5 12h5M9.5 15.5h3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <span class="ht-t">Text einfügen</span>
+                <span class="ht-d">Text einfügen oder tippen – wird wie eine Aufnahme behandelt.</span>
+              </button>
+              <button type="button" class="home-tile">
+                <span class="ht-ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 10.5V16c0 1.5 2.5 3 6 3s6-1.5 6-3v-5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <span class="ht-t">Meine Lernhilfen</span>
+                <span class="ht-d">Karteikarten, Glossar &amp; Quiz aller Aufnahmen an einem Ort.</span>
               </button>
             </div>
             <p class="home-sub label">Zuletzt bearbeitet</p>
@@ -903,11 +913,11 @@
     <section class="band tint">
       <div class="wrap">
         <span class="label">Für wen</span>
-        <p class="lead">Drei Wege, dieselbe Sache: aus Gesprochenem etwas Brauchbares machen.</p>
+        <p class="lead">Drei Wege, dieselbe Sache: aus deinem Material etwas Brauchbares machen.</p>
         <div class="who">
           <div class="col">
             <h3>Studium</h3>
-            <p>Ganzen Ordner Vorlesungen hineinziehen. Aus jedem Mitschnitt: Zusammenfassung, Karteikarten (auch für Anki), Glossar, Quiz – aus deinem Stoff, nicht aus dem Netz.</p>
+            <p>Ganzen Ordner Vorlesungen hineinziehen – oder gleich das Skript als PDF, die Folien als PowerPoint, ein Foto der Mitschrift. Aus allem: Zusammenfassung, Karteikarten (auch für Anki), Glossar, Quiz – aus deinem Stoff, nicht aus dem Netz.</p>
           </div>
           <div class="col">
             <h3>Sensible Aufnahmen</h3>
@@ -956,6 +966,15 @@
         <span class="label">Alles dabei</span>
         <p class="lead">Ein Kauf. Kein Nachschlag.</p>
         <div class="incl-groups">
+          <div class="incl-group">
+            <h4>Quellen</h4>
+            <div class="incl">
+              <span>Audio &amp; Video</span>
+              <span>PDF · Word · PowerPoint</span>
+              <span>Fotos (Texterkennung)</span>
+              <span>Eingefügter Text</span>
+            </div>
+          </div>
           <div class="incl-group">
             <h4>Transkription</h4>
             <div class="incl">
@@ -1015,6 +1034,10 @@
           <details>
             <summary>Welche Audio-/Videoformate werden unterstützt?</summary>
             <p>So gut wie alle gängigen – MP3, WAV, M4A, MP4, MOV und viele mehr. Auch ganze Ordner mit gemischten Formaten funktionieren.</p>
+          </details>
+          <details>
+            <summary>Geht das auch ohne Aufnahme – mit PDFs, Word-Dateien oder Fotos?</summary>
+            <p>Ja. PDF, Word (.docx) und PowerPoint (.pptx) liest Quonn direkt aus, ganz ohne Umweg über Ton. Fotos – z. B. von einer Mitschrift oder einem Buchauszug – liest Quonn per Texterkennung; mehrere Fotos auf einmal reingezogen werden zu einer Aufnahme zusammengefasst. Du kannst auch einfach Text einfügen oder tippen. In allen Fällen läuft danach genau dieselbe Verarbeitung wie bei einer transkribierten Aufnahme: Zusammenfassung, Karteikarten, Glossar, Quiz, Übersetzung, Export.</p>
           </details>
           <details>
             <summary>Wie lang dürfen die Aufnahmen sein?</summary>
